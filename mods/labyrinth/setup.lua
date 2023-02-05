@@ -25,6 +25,10 @@ function prev_level()
 end
 
 function next_level()
+    minetest.sound_play("next_level", {
+        to_player = "singleplayer",
+        gain = 0.8,
+    })
     level = level + 1
     this_level(level)    
 end

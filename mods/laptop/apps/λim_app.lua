@@ -74,9 +74,17 @@ laptop.register_app("λim", {
 			cmd = data.text
 			local func = {loadstring(cmd)}
 			if (func[1] ~= nil) then
+				minetest.sound_play("blip", {
+					to_player = "singleplayer",
+					gain = 0.8,
+				})
 				func[1]()
 				init_level()
 			else 
+				minetest.sound_play("static", {
+					to_player = "singleplayer",
+					gain = 0.8,
+				})
 				minetest.chat_send_all("Error!")
 				minetest.chat_send_all(func[2])
 			end
