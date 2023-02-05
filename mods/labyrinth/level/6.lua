@@ -20,6 +20,7 @@ function init_level()
     local door = minetest.get_content_id("doors:door_steel_a")
     local desk = minetest.get_content_id("homedecor:table_mahogany")
     local chest = minetest.get_content_id("default:chest")
+    local book = minetest.get_content_id("homedecor:book_red")
 
     --player target coords
     center_x = math.floor((height+1)/2)
@@ -56,9 +57,13 @@ function init_level()
     data[a:index(2, 1, 3)] = desk  
     -- param2[a:index(center_x-3, 2, center_z-2)] = minetest.dir_to_facedir({x=-1,y=0,z=0})
 
-    data[a:index(center_x, 6, width)] = door
-    data[a:index(center_x, 7, width)] = air
+    data[a:index(center_x, 1, width)] = door
+    data[a:index(center_x, 2, width)] = air
     data[a:index(center_x, 16, width)] = chest
+    data[a:index(5, 1, 6)] = book
+    local meta1 = minetest.get_meta({ x = 5, y = 1,z = 6 })
+	meta1:set_string("title","exit")
+	meta1:set_string("text","对不起博士，我们的计划失败了，一切还是来\n的太迟了。在阻止切尔诺伯格核心城失败后，\n我们没能保护您。现在整合运动的意识读取计\n划已经完成，只希望我留下的这段文字您能够\n看到。炎国与乌萨斯的战争已经打响了，整合\n运动借此控制了大部分的地区，罗德岛的大家\n也不得不因此四处逃亡。但我知道一切还有转\n机。博士，还有真正的博士，希望您能在另一\n个世界拯救我们。——阿米娅留")
 
     minetest.register_globalstep(
         function(dtime)

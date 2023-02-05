@@ -30,7 +30,9 @@ function next_level()
 end
 
 function this_level()
+    
     local player = minetest.get_player_by_name("singleplayer")
+    --[[
     if music_playing ~= nil then
         music_playing = minetest.sound_stop(music_playing)   
     end 
@@ -41,7 +43,8 @@ function this_level()
             gain = 0.8,
             loop = true,
         })
-    end
+    end--]]
+
     player:set_pos({x=5,y=1.5,z=2})
     id1 = player:hud_add({
         hud_elem_type = "text",
