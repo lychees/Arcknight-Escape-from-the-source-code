@@ -1,4 +1,5 @@
 --dofile(modpath .. "/message.lua")
+music_playing = nil
 level = 1
 new_level = true
 
@@ -29,7 +30,21 @@ function next_level()
 end
 
 function this_level()
+    
     local player = minetest.get_player_by_name("singleplayer")
+    --[[
+    if music_playing ~= nil then
+        music_playing = minetest.sound_stop(music_playing)   
+    end 
+    if music_playing == nil then
+        minetest.chat_send_all("play music!")
+        music_playing = minetest.sound_play("labyrinth_bgm", {
+            to_player = "singleplayer",
+            gain = 0.8,
+            loop = true,
+        })
+    end--]]
+
     player:set_pos({x=5,y=1.5,z=2})
     id1 = player:hud_add({
         hud_elem_type = "text",

@@ -141,7 +141,7 @@ minetest.register_on_joinplayer(
             gain = 0.8,
             loop = true,
         })
-        safe_clear(300, 300)        
+        safe_clear(300, 300) 
         minetest.set_timeofday(0.2)
         skins.set_player_skin(player, "character_arknights_doctor")
         this_level()

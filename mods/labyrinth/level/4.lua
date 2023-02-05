@@ -68,7 +68,7 @@ function init_level()
     data[a:index(center_x, 2, width)] = air
     local meta2 = minetest.get_meta({x = 5, y = 1, z = 30})
                meta2:set_string("title","go_level")
-               meta2:set_string("text","go_level(level)：go_level函数可帮你穿越于各个\n防火墙中\nlevel:防火墙层数\n\n博士！我是阿米娅，能看到我留下的文字吗？\n防火墙的漏洞就在一开始的地方！小心！")
+               meta2:set_string("text","go_level(level)：go_level函数可帮你穿越于各个\n防火墙中\nlevel:防火墙层数（如1、2）\n\n博士！我是阿米娅，能看到我留下的文字吗？\n防火墙的漏洞就在一开始的地方！要留意墙\n外之物！")
 
     minetest.register_globalstep(
         function(dtime)
