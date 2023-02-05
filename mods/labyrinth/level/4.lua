@@ -22,6 +22,7 @@ function init_level()
     local air = minetest.get_content_id("air")
     local door = minetest.get_content_id("doors:door_steel_a")
     local desk = minetest.get_content_id("homedecor:table_mahogany")
+    local book = minetest.get_content_id("homedecor:book_red")
 
     --player target coords
     center_x = math.floor((height+1)/2)
@@ -63,8 +64,11 @@ function init_level()
     data[a:index(2, 2, 2)] = ipad
     -- param2[a:index(center_x-3, 2, center_z-2)] = minetest.dir_to_facedir({x=-1,y=0,z=0})
 
-    data[a:index(center_x, 1, width)] = door
+    data[a:index(5, 1, 30)] = book
     data[a:index(center_x, 2, width)] = air
+    local meta2 = minetest.get_meta({x = 5, y = 1, z = 30})
+               meta2:set_string("title","go_level")
+               meta2:set_string("text","go_level(level)：go_level函数可帮你穿越于各个\n防火墙中\nlevel:防火墙层数\n\n博士！我是阿米娅，能看到我留下的文字吗？\n防火墙的漏洞就在一开始的地方！小心！")
 
     minetest.register_globalstep(
         function(dtime)

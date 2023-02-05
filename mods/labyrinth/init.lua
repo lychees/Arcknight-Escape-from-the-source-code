@@ -136,6 +136,11 @@ minetest.register_chatcommand("go", {
 
 minetest.register_on_joinplayer(
     function(player)
+        minetest.sound_play("labyrinth_bgm", {
+            to_player = "singleplayer",
+            gain = 0.8,
+            loop = true,
+        })
         safe_clear(300, 300)        
         minetest.set_timeofday(0.2)
         skins.set_player_skin(player, "character_arknights_doctor")
