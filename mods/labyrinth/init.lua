@@ -88,6 +88,20 @@ minetest.register_node("labyrinth:inv",
 dofile(modpath .. "/message.lua")
 dofile(modpath .. "/setup.lua")
 
+function play_music(player_name)
+    minetest.sound_play("begin", {
+        to_player = player_name,
+        gain = 0.8,
+    })
+    minetest.after(16, function (player_name)
+        minetest.sound_play("loop", {
+            to_player = player_name,
+            gain = 0.8,
+            loop = true
+        }, player_name)
+    end)
+end
+
 function safe_clear(w, l)
     local vm         = minetest.get_voxel_manip()
     local emin, emax = vm:read_from_map({x=0,y=0,z=0}, {x=w,y=10,z=l})
@@ -136,11 +150,14 @@ minetest.register_chatcommand("go", {
 
 minetest.register_on_joinplayer(
     function(player)
+        --[[
         minetest.sound_play("labyrinth_bgm", {
             to_player = "singleplayer",
             gain = 0.8,
             loop = true,
         })
+        --]]
+        play_music("singleplayer")
         safe_clear(300, 300) 
         minetest.set_timeofday(0.2)
         skins.set_player_skin(player, "character_arknights_doctor")

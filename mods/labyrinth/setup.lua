@@ -1,5 +1,4 @@
 --dofile(modpath .. "/message.lua")
-music_playing = nil
 level = 1
 new_level = true
 
@@ -30,7 +29,7 @@ function next_level()
         gain = 0.8,
     })
     level = level + 1
-    this_level(level)    
+    this_level()    
 end
 
 function this_level()
@@ -48,7 +47,6 @@ function this_level()
             loop = true,
         })
     end--]]
-
     player:set_pos({x=5,y=1.5,z=2})
     id1 = player:hud_add({
         hud_elem_type = "text",
