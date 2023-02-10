@@ -1,6 +1,7 @@
 local modpath = minetest.get_modpath("labyrinth")
 dofile(modpath .. "/level/4_editable.lua")
 
+local S = minetest.get_translator("labyrinth")
 local story = 0
 function init_level()
     local player = minetest.get_player_by_name("singleplayer")
@@ -68,7 +69,7 @@ function init_level()
     data[a:index(center_x, 2, width)] = air
     local meta2 = minetest.get_meta({x = 5, y = 1, z = 30})
                meta2:set_string("title","go_level")
-               meta2:set_string("text","go_level(level)：go_level函数可帮你穿越于各个\n防火墙中\nlevel:防火墙层数（如1、2）\n\n博士！我是阿米娅，能看到我留下的文字吗？\n防火墙的漏洞就在一开始的地方！要留意墙\n外之物！")
+               meta2:set_string("text",S("go_level(level)：go_level函数可帮你穿越于各个\n防火墙中\nlevel:防火墙层数（如1、2）\n\n博士！我是阿米娅，能看到我留下的文字吗？\n防火墙的漏洞就在一开始的地方！要留意墙\n外之物！"))
 
     minetest.register_globalstep(
         function(dtime)
@@ -90,12 +91,12 @@ end
 
 function init_story()
     story = 0
-    minetest.chat_send_all("凯尔希：这就是命运的最后了，历史沉浮，成王败寇。博士，您会成为怎样的人呢？")
-    minetest.chat_send_all("阿米娅：博士...您还好吗？")
-    minetest.chat_send_all("博士：......")
-    minetest.chat_send_all("凯尔希：敌人也抵达了最期的命运，眼前这座桥，或许是通往自由的天梯，又或许是前往冥土的奈何……生老病死，循环不息，生者死去为新路，新生者亦会蹈复辙。")
-    minetest.chat_send_all("阿米娅：博士，坚持住！就差最后一点了...他们要追上来了，博士，博士！")
-    minetest.chat_send_all(minetest.colorize("#ffff22", "任务更新：抵达「门」。"))
+    minetest.chat_send_all(S("凯尔希：这就是命运的最后了，历史沉浮，成王败寇。博士，您会成为怎样的人呢？"))
+    minetest.chat_send_all(S("阿米娅：博士...您还好吗？"))
+    minetest.chat_send_all(S("博士：......"))
+    minetest.chat_send_all(S("凯尔希：敌人也抵达了最期的命运，眼前这座桥，或许是通往自由的天梯，又或许是前往冥土的奈何……生老病死，循环不息，生者死去为新路，新生者亦会蹈复辙。"))
+    minetest.chat_send_all(S("阿米娅：博士，坚持住！就差最后一点了...他们要追上来了，博士，博士！"))
+    minetest.chat_send_all(minetest.colorize("#ffff22", S("任务更新：抵达「门」。")))
 end
 
 init_level()

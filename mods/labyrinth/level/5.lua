@@ -1,5 +1,6 @@
 ﻿story = 0
 
+local S = minetest.get_translator("labyrinth")
 local function init_level()
     local player = minetest.get_player_by_name("singleplayer")
     safe_clear(20, 20)
@@ -88,7 +89,7 @@ data[a:index(2, 1, 2)] = desk
     data[a:index(5, 1, 8)] = book
     local meta1 = minetest.get_meta({ x = 5, y = 1,z = 8 })
 	meta1:set_string("title","level 1")
-	meta1:set_string("text","超级隐藏房")
+	meta1:set_string("text",S("超级隐藏房"))
 
 
     minetest.register_globalstep(
